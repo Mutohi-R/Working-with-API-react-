@@ -14,10 +14,16 @@ function Post({ post, handleDelete }) {
     setIsEditing(!isEditing)
   }
 
-  const handleUpdate = () => {
+  const handleUpdate = ( ) => {
     console.log('you are about to update')
-    post.title=editedValue
-    setIsEditing(!isEditing)
+    if (editedValue) {
+      post.title=editedValue
+      setIsEditing(!isEditing)
+    } else {
+      alert('List item empty')
+      let shouldDelete = confirm('Delete instead')
+      shouldDelete ? handleDelete(post.id) : null
+    }
   }
 
   const handleEditingChange = (e) => {
@@ -36,10 +42,9 @@ function Post({ post, handleDelete }) {
         <li>
           <input 
             autoFocus
-            type="text" 
+            type="textArea" 
             value={editedValue} 
-            onChange={(e) => handleEditingChange(e)}
-            onSubmit={handleUpdate}/>
+            onChange={(e) => handleEditingChange(e)}/>
           <button onClick={handleUpdate}>Update</button>
           <button onClick={handleCancel}>Cancel</button>
         </li>

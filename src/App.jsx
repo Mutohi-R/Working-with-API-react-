@@ -19,17 +19,9 @@ const App = () => {
   },[])
 
   const handleDelete = (id) => {
-    const newPost = () => posts.filter((post) => post.id !== id)
+    const newPost = posts.filter((post) => post.id !== id)
     setPosts(newPost)
   }
-
-  
-
-  // const handleUpdate = () => {
-  //   setIsEditing(!isEditing)
-  // }
-
-
 
   return (
     <div>
